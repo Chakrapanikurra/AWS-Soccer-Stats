@@ -1,0 +1,28 @@
+/* style.css */
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+.player-info {
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin-bottom: 20px;
+  margin-left: 0px;
+  max-width: 400px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+}
+
+.player-info h2 {
+  color: #333;
+}
+
+.player-info p {
+  margin: 8px 0;
+}
+
+/* .player_cards{
+  display: flex;
+  margin-right: 10px;
+} */
