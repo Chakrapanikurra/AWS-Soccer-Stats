@@ -1,6 +1,5 @@
 <?php include 'config/database.php'; ?>
 <?php
-
 // Function to get all player IDs from the database
 function getAllPlayerIDs($conn) {
     $sql = "SELECT Player_ID FROM Soccer_stats";
@@ -17,8 +16,6 @@ function getAllPlayerIDs($conn) {
 
     return $playerIDs;
 }
-
-
 ?>
 
 <!DOCTYPE html>
