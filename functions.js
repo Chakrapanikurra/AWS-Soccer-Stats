@@ -8,9 +8,9 @@ function fetchPlayerData() {
         if (xhr.readyState == 4 && xhr.status == 200) {
             // Display the data in the playerDataContainer
             document.getElementById("playerDataContainer").innerHTML = xhr.responseText;
-
+          
             //update Chart
-            updateChart();
+            updateChart(selectedPlayerID);
 
         }
 
@@ -21,25 +21,39 @@ function fetchPlayerData() {
     xhr.send();
 }
 
-function updateChart(){
+function updateChart(selectedPlayerID) {
+  // Make an AJAX request to get player-specific data
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function () {
+      if (xhr.readyState == 4 && xhr.status == 200) {
+          // Parse the JSON response
+          var responseData = JSON.parse(xhr.responseText);
 
-    var stars = [135850, 52122, 148825, 16939, 9763];
-    var months = ["November", "December", "January", "Feburary", "March"];
+          // Extract data for the chart
+          var goalsData = responseData.goalsData; 
 
-    const ctx = document.getElementById('myChart');            
-    var myChart = new Chart(ctx, {
-      type: "line",
-      data: {
-        labels: months,
-        datasets: [
-          {
-            label: "Goals Scored",
-            data: stars,
-          },
-        ],
-      },
-    });
+          // Chart configuration
+          const ctx = document.getElementById('myChart');
+          var myChart = new Chart(ctx, {
+              type: "line",
+              data: {
+                  labels: responseData.months,
+                  datasets: [
+                      {
+                          label: "Goals Scored",
+                          data: goalsData,
+                      },
+                  ],
+              },
+          });
+      }
+  };
+
+  // Add the appropriate URL and method for your API endpoint
+  xhr.open("GET", "getPlayerStats.php?playerID=" + selectedPlayerID, true);
+  xhr.send();
 }
+
 
 //function to add new player 
 function addNewPlayer(){

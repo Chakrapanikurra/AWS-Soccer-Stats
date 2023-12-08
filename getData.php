@@ -14,6 +14,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     echo '
     <div class="player_cards">
     <div class="player-info">';
+    echo '<input type="hidden" id="Player_ID" name="Player_ID" value="' . $row['Player_ID'] . '">';
     echo '<h2>' . $row['Player_Name'] . '</h2>';
     echo '<p><strong>Age:</strong> ' . $row['Player_Age'] . '</p>';
     echo '<p><strong>Birthplace:</strong> ' . $row['Player_BirthPlace'] . '</p>';
