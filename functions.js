@@ -15,8 +15,6 @@ function fetchPlayerData() {
         }
 
     };
-
-    // Make an asynchronous request to your server
     xhr.open("GET", "getData.php?playerID=" + selectedPlayerID, true);
     xhr.send();
 }
@@ -48,8 +46,6 @@ function updateChart(selectedPlayerID) {
           });
       }
   };
-
-  // Add the appropriate URL and method for your API endpoint
   xhr.open("GET", "getPlayerStats.php?playerID=" + selectedPlayerID, true);
   xhr.send();
 }

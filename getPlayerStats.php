@@ -13,17 +13,18 @@ if (!$conn) {
 $playerID = $_GET['playerID'];
 
 // Perform a database query to get player-specific data
-$query = "SELECT `Nov2023_Goals`, `Dec2023_Goals` FROM `Player_Stats` WHERE `Player_ID` = $playerID";
+$query = "SELECT `Nov2023_Goals`, `Dec2023_Goals`, `Jan2023_Goals`  
+FROM `Player_Stats` WHERE `Player_ID` = $playerID";
 $result = mysqli_query($conn, $query);
 
 $data = array();
-$months = array("November", "December");
+$months = array("November", "December","January");
 
 
 while ($row = mysqli_fetch_assoc($result)) {
     $data[] = $row['Nov2023_Goals'];
     $data[] = $row['Dec2023_Goals'];
-    // Add more lines for other months if needed
+    $data[] = $row['Jan2023_Goals'];
 }
 
 $response = array(
