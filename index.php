@@ -1,20 +1,20 @@
 <?php include 'config/database.php'; ?>
 <?php
 // Function to get all player IDs from the database
-function getAllPlayerIDs($conn) {
-    $sql = "SELECT Player_ID FROM Soccer_stats";
+function getAllPlayers($conn) {
+    $sql = "SELECT Player_ID, Player_Name FROM Soccer_stats";
     $result = mysqli_query($conn, $sql);
 
     if (!$result) {
         die("Query failed: " . mysqli_error($conn));
     }
 
-    $playerIDs = array();
+    $players = array();
     while ($row = mysqli_fetch_assoc($result)) {
-        $playerIDs[] = $row['Player_ID'];
+        $players[] = $row;
     }
 
-    return $playerIDs;
+    return $players;
 }
 ?>
 
@@ -61,12 +61,12 @@ function getAllPlayerIDs($conn) {
         <div class="form-group">
             <label for="playerSelect">Select Player:</label>
             <select id="playerSelect" class="form-control" onchange="fetchPlayerData()">
-                <?php
-        // Get all player IDs
-        $playerIDs = getAllPlayerIDs($conn);
+            <?php
+        // Get all player IDs and names
+        $players = getAllPlayers($conn);
         echo '<option value="0">Choose One</option>';
-        foreach ($playerIDs as $id) {
-          echo "<option value=\"$id\">Player $id</option>";
+        foreach ($players as $player) {
+            echo "<option value=\"{$player['Player_ID']}\">{$player['Player_Name']}</option>";
         }
         ?>
             </select>

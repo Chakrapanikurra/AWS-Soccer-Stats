@@ -22,7 +22,9 @@ body {
   margin: 8px 0;
 }
 
-/* .player_cards{
+.player_cards {
   display: flex;
-  margin-right: 10px;
-} */
+  justify-content: space-evenly;
+  margin-bottom: 20px;
+}
+

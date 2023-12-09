@@ -13,25 +13,22 @@ $result = getData($playerID);
 while ($row = mysqli_fetch_assoc($result)) {
     echo '
     <div class="player_cards">
-    <div class="player-info">';
-    echo '<input type="hidden" id="Player_ID" name="Player_ID" value="' . $row['Player_ID'] . '">';
-    echo '<h2>' . $row['Player_Name'] . '</h2>';
-    echo '<p><strong>Age:</strong> ' . $row['Player_Age'] . '</p>';
-    echo '<p><strong>Birthplace:</strong> ' . $row['Player_BirthPlace'] . '</p>';
-    echo '<p><strong>Height:</strong> ' . $row['Player_Height'] . '</p>';
-    echo '<p><strong>Position:</strong> ' . $row['Player_Position'] . '</p>';
-    echo '<p><strong>Current Team:</strong> ' . $row['Player_CurrentTeam'] . '</p>';
-    echo '<p><strong>Games Played:</strong> ' . $row['Player_GamesPlayed'] . '</p>';
-    echo '<p><strong>Career Goals:</strong> ' . $row['Player_CareerGoals'] . '</p>';
-    echo '</div>';
-
-    echo ' 
-    <div>
-    <canvas id="myChart"></canvas>
-    </div>
-    </div>
-
-    '; 
+        <div class="player-info">
+            <input type="hidden" id="Player_ID" name="Player_ID" value="' . $row['Player_ID'] . '">
+            <h2>' . $row['Player_Name'] . '</h2>
+            <p><strong>Age:</strong> ' . $row['Player_Age'] . '</p>
+            <p><strong>Birthplace:</strong> ' . $row['Player_BirthPlace'] . '</p>
+            <p><strong>Height:</strong> ' . $row['Player_Height'] . '</p>
+            <p><strong>Position:</strong> ' . $row['Player_Position'] . '</p>
+            <p><strong>Current Team:</strong> ' . $row['Player_CurrentTeam'] . '</p>
+            <p><strong>Games Played:</strong> ' . $row['Player_GamesPlayed'] . '</p>
+            <p><strong>Career Goals:</strong> ' . $row['Player_CareerGoals'] . '</p>
+        </div>
+        <div>
+            <h2> Player highlights </h2>
+            <canvas id="myChart"></canvas>
+        </div>
+    </div>';
 }
 
 function getData($PlayerID){
