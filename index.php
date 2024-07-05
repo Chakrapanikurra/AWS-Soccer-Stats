@@ -23,7 +23,7 @@ function getAllPlayers($conn) {
 
 <head>
     <meta charset="UTF-8">
-    <title>Construction Cost Optimiser</title>
+    <title>Builders Paradise</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
