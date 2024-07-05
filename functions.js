@@ -52,37 +52,52 @@ function updateChart(selectedPlayerID) {
 
 
 //function to add new player 
-function addNewPlayer(){
+function addNewProject(){
     // Serialize the form data
-    let formValues = $("#addPlayerForm").serialize();
+    let formValues = $("#addProjectForm").serialize();
     // Log the serialized data to the console
     console.log(formValues);
 
     
-    url = 'addPlayer.php';
+    url = 'addProject.php';
 
     $.post(url, formValues, function(data){
-        $(addPlayerModal).modal('hide');
+        $(addProjectModal).modal('hide');
         location.reload();
     });
 }
 //function to show the add player modal
-function addPlayer(){
-  $('#addPlayerModal').modal('show');
+function addProject(){
+  $('#addProjectModal').modal('show');
+}
+
+function showProjects(){
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            // Display the data in the playerDataContainer
+            document.getElementById("projectDataContainer").innerHTML = xhr.responseText;
+          
+            //update Chart
+            // updateChart(selectedPlayerID);
+
+        }
+
+    };
+    xhr.open("GET", "getProjects.php", true);
+    xhr.send();
 }
 
 $(document).ready(function(){
-    
-    document.querySelector('#addPlayer').addEventListener('click',addPlayer);
+    showProjects()
+    document.querySelector('#addProject').addEventListener('click',addProject);
     // Event listener for the "Save" button click
-    document.getElementById('addPlayerModalButton').addEventListener('click', addNewPlayer);
-    // Event listener for the "Cancel" button click (just to prevent any default behavior)
-    document.getElementById('CanceladdPlayerModalButton').addEventListener('click', function(event) {
-    event.preventDefault();
+    document.getElementById('addProjectModalButton').addEventListener('click', addNewProject);
+
+    
 
     
     
 
-});
 });
 

@@ -1,30 +1,77 @@
-/* style.css */
-
 body {
   font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
-.player-info {
+.project_cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.project-info {
   border: 1px solid #ccc;
   padding: 15px;
-  margin-bottom: 20px;
-  margin-left: 0px;
+  margin: 0;
   max-width: 400px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-
+  flex: 1 1 calc(33.333% - 40px); /* Adjust the percentage as needed */
+  box-sizing: border-box;
 }
 
-.player-info h2 {
+.project-info h2 {
   color: #333;
 }
 
-.player-info p {
+.project-info p {
   margin: 8px 0;
 }
 
-.player_cards {
-  display: flex;
-  justify-content: space-evenly;
+.project_card_link {
+  text-decoration: none;
+  color: inherit;
+  display: block; /* Ensures the entire card is clickable */
+}
+
+.project_card_link:hover .project-info {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Optional: Add a hover effect */
+}
+
+.project-details, .task-details {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
 }
 
+.project-details h1, .task-details h2 {
+  color: #333;
+}
+
+.project-details p, .task-info p {
+  margin: 10px 0;
+}
+
+.task-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.task-card {
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  flex: 1 1 calc(50% - 20px); /* Adjust the percentage as needed */
+  box-sizing: border-box;
+}
+
+.task-card h3 {
+  margin-top: 0;
+}
