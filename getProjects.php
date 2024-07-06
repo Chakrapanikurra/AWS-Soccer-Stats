@@ -17,6 +17,7 @@ while ($row = mysqli_fetch_assoc($result)) {
             <div class="project-info">
                 <h2>' . $row['project_name'] . '</h2>
                 <p><strong>Description:</strong> ' . $row['project_description'] . '</p>
+                <p><strong>Budget:</strong> $' . number_format($row['total_budget'],2) . '</p>
                 <p><strong>Start Date:</strong> ' . $row['project_start_date'] . '</p>
                 <p><strong>End Date:</strong> ' . $row['project_end_date'] . '</p>
             </div>

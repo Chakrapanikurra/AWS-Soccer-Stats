@@ -1,8 +1,14 @@
 <?php
 include 'config/database.php';
+// Start the session
+session_start();
+
 
 if (isset($_GET['project_id'])) {
     $project_id = $_GET['project_id'];
+    $_SESSION['project_id'] = $project_id;
+
+    // var_dump($_SESSION['project_id']);
 
     // Establish a connection to the database
     $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
@@ -38,12 +44,13 @@ if (isset($_GET['project_id'])) {
                 
                 echo '<div class="task-card">
                 <link rel="stylesheet" href="style.css">
-                <a style="text-decoration: none" href="getTaskDetails.php?task_id=' . $task_row['task_id'] . '" class="project_card_link">
-                        <h3>' . $task_row['task_name'] . '</h3>
-                        <p><strong>Description:</strong> ' . $task_row['task_description'] . '</p>
-                        <p><strong>Cost:</strong> $' . $task_row['task_cost'] . '</p>
-                        <p><strong>Status:</strong> ' . $task_row['task_status'] . '</p>
-                    </div>';
+                <a style="text-decoration: none" href="getTaskDetails.php?project_id=' . $project_id . '&task_id=' . $task_row['task_id'] . '" class="project_card_link">
+                <h3>' . $task_row['task_name'] . '</h3>
+                <p><strong>Description:</strong> ' . $task_row['task_description'] . '</p>
+                <p><strong>Cost:</strong> $' . $task_row['task_cost'] . '</p>
+                <p><strong>Status:</strong> ' . $task_row['task_status'] . '</p>
+                </a>
+            </div>';
             }
             echo '</div>';
         } else {

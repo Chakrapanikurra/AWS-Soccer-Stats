@@ -10,15 +10,18 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+// var_dump($_POST['projectName']);
+
 // Get values from the POST request
 $projectName = $_POST['projectName'];
 $projectDescription = $_POST['projectDescription'];
+$totalBudget = $_POST['total_budget'];
 $projectStartDate = $_POST['projectStartDate'];
 $projectEndDate = $_POST['projectEndDate'];
 
 // SQL query to insert data
-$sql = "INSERT INTO projects (project_name, project_description, project_start_date, project_end_date)
-        VALUES ('$projectName', '$projectDescription', '$projectStartDate', '$projectEndDate')";
+$sql = "INSERT INTO projects (project_name, project_description, total_budget, project_start_date, project_end_date)
+        VALUES ('$projectName', '$projectDescription','$totalBudget','$projectStartDate', '$projectEndDate')";
 
 if ($conn->query($sql) === TRUE) {
     echo "New record created successfully";
